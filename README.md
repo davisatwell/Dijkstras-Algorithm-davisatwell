@@ -1,60 +1,41 @@
-# A5-Dijkstra
+# <img src = "https://ars.els-cdn.com/content/image/3-s2.0-B9781558608610500067-f04-13-9781558608610.jpg"/> <img src = "https://img.shields.io/badge/Dijkstra's%20Algorithm%20in%20Java-davisatwell-important"/>
 
-For this assignment you will be creating your own Directed Graph and performing Dijkstra's Algorithm
-on the graph. This assignment is less structured than others and gives you the freedom to implement
-the graph however you choose. The graded portion of the assignment will be the GraphImpl.java class. 
-The behind the scenes of your graph are not tested, as long as the methods in GraphImpl.java function correctly.
-You are encouraged to create tests in Main.java to test your code. 
+created my own Directed Graph and performed Dijkstra's Algorithm
+on the graph. 
 
-## Task: Implement the methods in Graph.java
-These include the following.
+## Algorithm Defined
+1. Let i = 0, V<sub>0</sub> = {p<sub>0</sub>}, D(p<sub>0</sub>) = 0, and D(q) = ∞ for q ≠ p<sub>0</sub>. If α<sub>0</sub> = 1, then stop; otherwise, go to Step 2.
+
+2. For each q ∈ S/V<sub>i</sub>, update D(q) by min{D(q),D(p<sub>i</sub>) + w(q,p<sub>i</sub>)}.If D(q) is replaced, put a label [D(q),p<sub>i</sub>] on q. (This allows for the tracking of shortest paths.) Overwrite the previous label, if there is one.
+
+3. Let p<sub>i</sub>+1 be a node that minimizes {D(q): q ∈ S/V<sub>i</sub>}.
+
+4. Let V<sub>i</sub>+1 = V<sub>i</sub> ∪ {p<sub>i</sub>+1}.
+
+5. Replace i with i + 1. If i = α<sub>0</sub> −1, then stop; otherwise, go to Step 2.
+
+
+## Methods used in Graph.java
 ```
-    boolean addNode(String label);
+    boolean addNode(String label);   
+```
+```
     boolean addEdge(String src, String dest, double weight);
+```
+```
     boolean deleteNode(String label);
+```
+```
     boolean deleteEdge(String src, String dest);
+```
+```
     int numNodes();
+```
+```
     int numEdges();
+```
+```
     Map<String, Double> dijkstra(String start);
 ```
-
-> **Hint:** Try to implement and test basic functionality (e.g., creating a graph, adding nodes, adding edges, etc)
-> before you implement more complex methods.
-## Info and hints on files 
-
-You are graded based on your implementation in GraphImpl.java of the Graph.java methods.  However, you 
-should expect to also modify Edge.java, EdgeImpl.java, Node.java, and NodeImpl.java to define node and edge objects and 
-provide helper methods as you see fit to make your implementation of the graph methods easier. 
-
-> **Hint:** Look at the classes from previous assigments to see examples of fields and their usage.  You may need to create constructors
-> for edge and node objects.   
-
-### Edge.java
-
-The Edge interface is empty. It is your job to come up with the methods that you think an Edge object
-should have in order to create a graph and run Dijkstra. Write out the method signatures in
-the Edge.java interface and implement those methods in EdgeImpl.java. 
-To know what properties an Edge contains, take a look at the createEdge method in GraphImpl.java
- 
- > **Hint:** What fields do you need to describe an edge?
- 
-### Node.java
-
-The Node.java interface currently only has one method, getName(). This method should return the name
-associated with the Node. Do not remove this method since it is used for testing. Your task is to
-add the remaining methods that you think a Node needs in order to complete Dijkstra's Algorithm.
-The addNode() method in GraphImpl.java shows what fields a Node has. These fields are the minimum
-required, you may add any other fields that you may think are useful. 
-
-> **Hint:** Remember that we identify nodes based on a String label.  Look at the "nodes" map in 
-> GraphImpl.java and make sure you understand it.
-
-### Graph.java
-
-The interface Graph.java has all the methods needed for a graph. This interface is complete; do not 
-change any of the methods within it. You may add helper methods if needed in GraphImpl.java. You 
-must implement all the methods in this interface.  
-
-> **Hint:** Read Graph.java carefully.  Some of the methods (e.g., addEdge) return false for several different cases.
-
-> **Hint:** Consider writing a small helper method that prints the nodes and edges in a graph to help you debug.
+### License
+GNU-3.0-or-later
